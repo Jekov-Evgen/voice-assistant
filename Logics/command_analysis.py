@@ -11,7 +11,7 @@ class Analysis:
                    "проекты": self.open_my_git,
                    "алгоритмы" : self.open_my_codewars, 
                    "видео" : self.open_my_youtube,
-                   "код" : self.open_vs_cod,
+                   "писать" : self.open_vs_cod,
                    "погода" : self.get_weather,
                    "таймер" : self.timer}
         
