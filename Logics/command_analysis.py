@@ -13,7 +13,8 @@ class Analysis:
                    "видео" : self.open_my_youtube,
                    "писать" : self.open_vs_cod,
                    "погода" : self.get_weather,
-                   "таймер" : self.timer}
+                   "таймер" : self.timer, 
+                   "лиза" : self.her}
         
         if text in command:
             command[text]()
@@ -51,3 +52,6 @@ class Analysis:
         tm = int(input())
         sleep(tm)
         print("время вышло")
+        
+    def her(self):
+        os.startfile(r"C:\Users\Женя\source\repos\Liza\x64\Debug\Liza.exe")
