@@ -1,6 +1,7 @@
 import os
 import webbrowser
-from time import sleep
+from PyQt6.QtWidgets import QApplication
+from Logics.SupportWindow.timer import TimerWindow
 
 class Analysis:
     def analyze(self, text : str):
@@ -48,10 +49,9 @@ class Analysis:
         webbrowser.open(r"https://ua.sinoptik.ua/%D0%BF%D0%BE%D0%B3%D0%BE%D0%B4%D0%B0-%D0%BE%D0%B4%D0%B5%D1%81%D0%B0")
         
     def timer(self):
-        print("введите время для таймера: ")
-        tm = int(input())
-        sleep(tm)
-        print("время вышло")
+        app = QApplication([])
+        start = TimerWindow()
+        app.exec()
         
     def her(self):
         os.startfile(r"C:\Users\Женя\source\repos\Liza\x64\Debug\Liza.exe")

@@ -20,7 +20,7 @@ class MainWindow(QMainWindow):
         go_command = QPushButton(text="Начать выполнение")
         go_command.clicked.connect(self.run)
         
-        conrol_UI.addWidget(greet, alignment=Qt.AlignmentFlag.AlignHCenter)
+        conrol_UI.addWidget(greet, alignment=Qt.AlignmentFlag.AlignCenter)
         conrol_UI.addWidget(go_command)
         
         central_widget.setLayout(conrol_UI)

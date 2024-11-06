@@ -12,7 +12,7 @@ CONST_WINDOW = """
     
     QPushButton {
         background-color: #FFFFFF;
-        color: #2E2E2E;  /* Темный текст */
+        color: #2E2E2E;
         font-size: 14px;
         font-family: Arial, sans-serif;
         padding: 8px 16px;
