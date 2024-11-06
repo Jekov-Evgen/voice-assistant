@@ -5,7 +5,7 @@ import wave
 CHUNK = 1024    
 FRT = pyaudio.paInt16
 CHAN = 1
-REC_SEC = 3
+REC_SEC = 5
 OUTPUT = "output.wav"
 RT = 44100
 

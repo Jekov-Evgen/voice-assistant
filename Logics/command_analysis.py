@@ -1,16 +1,41 @@
 import os
 import webbrowser
-from PyQt6.QtWidgets import QApplication
+from PyQt6.QtCore import Qt
+from PyQt6.QtWidgets import QApplication, QLabel, QPushButton, QMainWindow, QWidget, QVBoxLayout
 from Logics.SupportWindow.timer import TimerWindow
+
+class Answer(QMainWindow):
+    def __init__(self, text) -> None:
+        super().__init__()
+        self.setFixedSize(150, 150)
+        self.setWindowTitle("Ответ!!!!")
+        
+        control_UI = QVBoxLayout()
+        central_widget = QWidget()
+        
+        ans = QLabel(text)
+        ds = QPushButton()
+        ds.clicked.connect(self.destroy)
+        
+        control_UI.addWidget(ans)
+        control_UI.addWidget(ds)
+        
+        central_widget.setLayout(control_UI)
+        
+        self.setCentralWidget(central_widget)
+        
+        self.show()
 
 class Analysis:
     def analyze(self, text : str):
+        self.res = None
+        
         command = {"привет": self.greet, 
                    "ладонь" : self.five, 
                    "интернет" : self.open_google, 
                    "записать": self.create_notebook,
                    "проекты": self.open_my_git,
-                   "алгоритмы" : self.open_my_codewars, 
+                   "логика" : self.open_my_codewars, 
                    "видео" : self.open_my_youtube,
                    "писать" : self.open_vs_cod,
                    "погода" : self.get_weather,
@@ -21,10 +46,18 @@ class Analysis:
             command[text]()
         
     def greet(self):
-        print("Привет") 
+        app = QApplication([])
+        
+        answer = Answer("Привет!!")
+        
+        app.exec()
         
     def five(self):
-        print("Даю пять")
+        app = QApplication([])
+        
+        answer = Answer("Даю краба")
+        
+        app.exec()
         
     def open_google(self):
         os.startfile(r"C:\Program Files\Google\Chrome\Application\chrome.exe")
