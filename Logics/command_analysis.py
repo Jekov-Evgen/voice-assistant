@@ -1,23 +1,26 @@
 import os
 import webbrowser
+import translate
 from PyQt6.QtCore import Qt
 from PyQt6.QtWidgets import QApplication, QLabel, QPushButton, QMainWindow, QWidget, QVBoxLayout
 from Logics.SupportWindow.timer import TimerWindow
+from Logics.SupportWindow.Style.support_style import CONST_ANSWER_BOX
 
 class Answer(QMainWindow):
     def __init__(self, text) -> None:
         super().__init__()
         self.setFixedSize(150, 150)
         self.setWindowTitle("Ответ!!!!")
+        self.setStyleSheet(CONST_ANSWER_BOX)
         
         control_UI = QVBoxLayout()
         central_widget = QWidget()
         
         ans = QLabel(text)
         ds = QPushButton()
-        ds.clicked.connect(self.destroy)
+        ds.clicked.connect(self.close)
         
-        control_UI.addWidget(ans)
+        control_UI.addWidget(ans, alignment=Qt.AlignmentFlag.AlignCenter)
         control_UI.addWidget(ds)
         
         central_widget.setLayout(control_UI)
@@ -40,7 +43,8 @@ class Analysis:
                    "писать" : self.open_vs_cod,
                    "погода" : self.get_weather,
                    "таймер" : self.timer, 
-                   "лиза" : self.her}
+                   "лиза" : self.her, 
+                   "перевод" : self.translate}
         
         if text in command:
             command[text]()
@@ -88,3 +92,6 @@ class Analysis:
         
     def her(self):
         os.startfile(r"C:\Users\Женя\source\repos\Liza\x64\Debug\Liza.exe")
+        
+    def translate(self):
+        pass
