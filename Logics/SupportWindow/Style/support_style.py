@@ -1,4 +1,4 @@
-CONST_WINDOW_TIMER = """
+CONST_WINDOW = """
     QMainWindow {
         background-color: #F5F5F5;
     }

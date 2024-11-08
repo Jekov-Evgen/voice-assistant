@@ -4,6 +4,7 @@ from PyQt6.QtCore import Qt
 from PyQt6.QtWidgets import QApplication, QLabel, QPushButton, QMainWindow, QWidget, QVBoxLayout
 from Logics.SupportWindow.timer import TimerWindow
 from Logics.SupportWindow.translate import TranslateWindow
+from Logics.SupportWindow.search import SearchWindow
 from Logics.SupportWindow.Style.support_style import CONST_ANSWER_BOX
 
 class Answer(QMainWindow):
@@ -44,7 +45,8 @@ class Analysis:
                    "погода" : self.get_weather,
                    "таймер" : self.timer, 
                    "лиза" : self.her, 
-                   "слово" : self.translate}
+                   "слово" : self.translate,
+                   "поиск" : self.search}
         
         if text in command:
             command[text]()
@@ -96,4 +98,9 @@ class Analysis:
     def translate(self):
         app = QApplication([])
         start = TranslateWindow()
+        app.exec()
+        
+    def search(self):
+        app = QApplication([])
+        start = SearchWindow()
         app.exec()

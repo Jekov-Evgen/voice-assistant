@@ -1,13 +1,13 @@
 from PyQt6.QtCore import Qt, QTimer
 from PyQt6.QtWidgets import QMainWindow, QWidget, QVBoxLayout, QLabel, QLineEdit, QPushButton, QMessageBox, QApplication
-from Logics.SupportWindow.Style.support_style import CONST_WINDOW_TIMER
+from Logics.SupportWindow.Style.support_style import CONST_WINDOW
 
 class TimerWindow(QMainWindow):
     def __init__(self) -> None:
         super().__init__()
         self.setFixedSize(250, 250)
         self.setWindowTitle("Таймер")
-        self.setStyleSheet(CONST_WINDOW_TIMER)
+        self.setStyleSheet(CONST_WINDOW)
         
         self.error = None
         self.res = None
