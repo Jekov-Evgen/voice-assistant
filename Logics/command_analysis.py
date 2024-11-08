@@ -1,5 +1,8 @@
 import os
 import webbrowser
+import http.client
+from PIL import ImageGrab
+import datetime
 from PyQt6.QtCore import Qt
 from PyQt6.QtWidgets import QApplication, QLabel, QPushButton, QMainWindow, QWidget, QVBoxLayout
 from Logics.SupportWindow.timer import TimerWindow
@@ -46,7 +49,12 @@ class Analysis:
                    "таймер" : self.timer, 
                    "лиза" : self.her, 
                    "слово" : self.translate,
-                   "поиск" : self.search}
+                   "поиск" : self.search,
+                   "запись" : self.notepad_open,
+                   "цифры" : self.open_calc,
+                   "консоль" : self.open_cmd,
+                   "номер" : self.get_IP, 
+                   "фото" : self.screen}
         
         if text in command:
             command[text]()
@@ -104,3 +112,26 @@ class Analysis:
         app = QApplication([])
         start = SearchWindow()
         app.exec()
+        
+    def notepad_open(self):
+        os.startfile("notepad.exe")
+        
+    def open_calc(self):
+        os.startfile("calc.exe")
+        
+    def open_cmd(self):
+        os.startfile("powershell.exe")
+        
+    def get_IP(self):
+        conn = http.client.HTTPConnection("ifconfig.me")
+        conn.request("GET", "/ip")
+        res = conn.getresponse().read().decode('utf-8')
+        app = QApplication([])
+        answer = Answer(res)
+        app.exec()
+        
+    def screen(self):
+        time = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
+        screen = ImageGrab.grab()
+        screen.save(f"Снимок{time}.png")
+        
