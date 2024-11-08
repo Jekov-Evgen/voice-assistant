@@ -1,9 +1,9 @@
 import os
 import webbrowser
-import translate
 from PyQt6.QtCore import Qt
 from PyQt6.QtWidgets import QApplication, QLabel, QPushButton, QMainWindow, QWidget, QVBoxLayout
 from Logics.SupportWindow.timer import TimerWindow
+from Logics.SupportWindow.translate import TranslateWindow
 from Logics.SupportWindow.Style.support_style import CONST_ANSWER_BOX
 
 class Answer(QMainWindow):
@@ -44,7 +44,7 @@ class Analysis:
                    "погода" : self.get_weather,
                    "таймер" : self.timer, 
                    "лиза" : self.her, 
-                   "перевод" : self.translate}
+                   "слово" : self.translate}
         
         if text in command:
             command[text]()
@@ -94,4 +94,6 @@ class Analysis:
         os.startfile(r"C:\Users\Женя\source\repos\Liza\x64\Debug\Liza.exe")
         
     def translate(self):
-        pass
+        app = QApplication([])
+        start = TranslateWindow()
+        app.exec()
